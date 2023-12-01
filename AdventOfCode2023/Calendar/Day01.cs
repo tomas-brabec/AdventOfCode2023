@@ -10,7 +10,7 @@ public class Day01
 
     private string _inputFileName;
 
-    private Dictionary<char, string> numbers = new()
+    private Dictionary<char, string> _numbers = new()
     {
         { '1', "one" },
         { '2', "two"},
@@ -53,7 +53,7 @@ public class Day01
                 {
                     buffer.Append(c);
                     string bufferdText = buffer.ToString();
-                    var matchingNumbers = numbers.Where(x => x.Value.StartsWith(bufferdText)).ToDictionary();
+                    var matchingNumbers = _numbers.Where(x => x.Value.StartsWith(bufferdText)).ToDictionary();
                     if (matchingNumbers.Count == 0)
                     {
                         if (bufferdText.Length > 2)
@@ -61,7 +61,7 @@ public class Day01
                             for (int i = 1; i < bufferdText.Length; i++)
                             {
                                 string text = bufferdText.Substring(i, bufferdText.Length - i);
-                                var matchingNumbersCount = numbers.Where(x => x.Value.StartsWith(text)).Count();
+                                var matchingNumbersCount = _numbers.Where(x => x.Value.StartsWith(text)).Count();
                                 if (matchingNumbersCount > 0)
                                 {
                                     buffer.Clear();
